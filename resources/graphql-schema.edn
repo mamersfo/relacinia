@@ -1,0 +1,29 @@
+{:objects   {:Country {:fields {:id      {:type (non-null String)}
+                                :code    {:type String}
+                                :name    {:type String}}}
+             :Player  {:fields {:id      {:type (non-null String)}
+                                :name    {:type String}
+                                :country {:type :Country}}}
+             :Team    {:fields {:id      {:type (non-null String)}
+                                :name    {:type String}
+                                :country {:type :Country}
+                                :players {:type (list :Player)}}}}
+
+ :queries   {:country   {:type :Country  :resolve :resolve-one  :args {:id {:type String}}}
+             :player    {:type :Player   :resolve :resolve-one  :args {:id {:type String}}}
+             :team      {:type :Team     :resolve :resolve-one  :args {:id {:type String}}}
+
+             :countries {:type (list :Country) :resolve :countries}
+             :players   {:type (list :Player)  :resolve :players}
+             :teams     {:type (list :Team)    :resolve :teams}}
+
+ :input-objects {:Ref   {:fields {:id      {:type String}}}
+                 :Input {:fields {:id      {:type String}
+                                  :name    {:type String}
+                                  :code    {:type String}
+                                  :country {:type :Ref}
+                                  :players {:type (list :Ref)}}}}
+
+ :mutations {:country {:type :Country, :args {:input {:type :Input}}, :resolve :country}
+             :player  {:type :Player,  :args {:input {:type :Input}}, :resolve :player}
+             :team    {:type :Team,    :args {:input {:type :Input}}, :resolve :team}}}

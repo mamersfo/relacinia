@@ -1,0 +1,65 @@
+[
+ ;; Countries
+ 
+ {:db/id #db/id[:db.part/user -1000001]
+  :type :Country
+  :id #uuid "5991903b-00ed-4a35-8bb2-3095bb05fc29"
+  :code "AR"
+  :name "Argentina"}
+
+ {:db/id #db/id[:db.part/user -1000002]
+  :type :Country
+  :id #uuid "59919047-e0ee-4dd6-9da0-814a6064eb0a"
+  :code "BR"
+  :name "Brazil"}
+
+ {:db/id #db/id[:db.part/user -1000003]
+  :type :Country
+  :id #uuid "599189f3-0e46-4458-a37d-989af09598c7"
+  :code "FR"
+  :name "France"}
+
+ {:db/id #db/id[:db.part/user -1000004]
+  :type :Country
+  :id #uuid "5993f7ca-055b-4b43-b22f-69ddf77c3791"
+  :code "NL"
+  :name "Netherlands"}
+
+ {:db/id #db/id[:db.part/user -1000005]
+  :type :Country
+  :id #uuid "599189f1-fba9-4b5a-9bc0-6c4600ff85f0"
+  :code "ES"
+  :name "Spain"}
+
+ ;; Players
+ 
+ {:db/id #db/id[:db.part/user -3000001]
+  :type :Player
+  :id #uuid "59919069-2bed-4150-afed-fbc6913e75ba"
+  :name "Lionel Messi"
+  :country #db/id[:db.part/user -1000001]}
+
+ {:db/id #db/id[:db.part/user -3000002]
+  :type :Player
+  :id #uuid "59919074-defd-479e-9f53-1c56fa439f5b"
+  :name "Thiago Silva"  
+  :country #db/id[:db.part/user -1000002]}
+ 
+ ;; Teams
+ 
+ {:db/id #db/id[:db.part/user -2000001]
+  :type :Team
+  :id #uuid "59919054-22ef-4542-8636-81b34bb6097d"
+  :code "BAR"
+  :name "FC Barcelona"
+  :country #db/id[:db.part/user -1000005]
+  :players #{ #db/id[:db.part/user -3000001] }}
+
+ {:db/id #db/id[:db.part/user -2000002]
+  :type :Team
+  :id #uuid "5991905e-e770-44c3-b18b-acc0cdc5362d"
+  :code "PSG"
+  :name "Paris Saint Germain"
+  :country #db/id[:db.part/user -1000003]
+  :players #{ #db/id[:db.part/user -3000002] }}
+]

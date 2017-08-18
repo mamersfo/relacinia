@@ -1,0 +1,55 @@
+# source: http://localhost:8080/graphql
+# timestamp: Thu Aug 17 2017 21:58:14 GMT+0200 (CEST)
+
+schema {
+  query: QueryRoot
+  mutation: MutationRoot
+}
+
+type Country {
+  code: String
+  id: String!
+  name: String
+}
+
+input Input {
+  code: String
+  country: Ref
+  id: String
+  name: String
+  players: [Ref]
+}
+
+# Root of all mutations.
+type MutationRoot {
+  country(input: Input): Country
+  player(input: Input): Player
+  team(input: Input): Team
+}
+
+type Player {
+  country: Country
+  id: String!
+  name: String
+}
+
+# Root of all queries.
+type QueryRoot {
+  countries: [Country]
+  country(id: String): Country
+  player(id: String): Player
+  players: [Player]
+  team(id: String): Team
+  teams: [Team]
+}
+
+input Ref {
+  id: String
+}
+
+type Team {
+  country: Country
+  id: String!
+  name: String
+  players: [Player]
+}

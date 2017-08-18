@@ -1,0 +1,43 @@
+[
+ {:db/id #db/id [:db.part/db]
+  :db/ident :id
+  :db/valueType :db.type/uuid
+  :db/cardinality :db.cardinality/one
+  :db/unique :db.unique/identity
+  :db.install/_attribute :db.part/db}
+ 
+ {:db/id #db/id [:db.part/db]
+  :db/ident :type
+  :db/valueType :db.type/keyword
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id [:db.part/db]
+  :db/ident :code
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db.install/_attribute :db.part/db}
+ 
+ {:db/id #db/id [:db.part/db]
+  :db/ident :name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id [:db.part/db]
+  :db/ident :country
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db.install/_attribute :db.part/db}
+ 
+ {:db/id #db/id [:db.part/db]
+  :db/ident :players
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/index true
+  :db.install/_attribute :db.part/db}
+ ]
