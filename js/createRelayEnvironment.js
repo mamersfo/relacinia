@@ -2,7 +2,7 @@ const {
   Environment,
   Network,
   RecordSource,
-  Store,
+  Store
 } = require('relay-runtime');
 
 // Define a function that fetches the results of an operation (query/mutation/etc)

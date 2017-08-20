@@ -1,5 +1,6 @@
 (ns lacinia-hack.util
   (:require [clojure.spec.alpha :as s]
+            [ring.util.request :refer [body-string]]
             [datomic.api :as d]))
 
 (defn uuid?
@@ -35,3 +36,10 @@
 
 (defn component? [a]
   (and (entity? a) (:db/isComponent a) (= :db.type/ref (:db/valueType a))))
+
+(defn wrap-body-string
+  [handler]
+  (fn [request]
+    (let [s (body-string request)]
+      (handler (assoc request :body s)))))
+

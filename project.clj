@@ -2,9 +2,9 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [com.walmartlabs/lacinia "0.20.0"]
                  [cheshire "5.7.1"]
-                 ;; [com.walmartlabs/lacinia-pedestal "0.3.0"]
-                 [ring/ring-core "1.6.0"]
+                 [ring "1.6.2"]
                  [ring-cors "0.1.10"]
+                 [compojure "1.6.0"]
                  [com.datomic/datomic-free "0.9.5561.54"]]
   :plugins [[lein-ring "0.12.0"]]
   :ring {:handler lacinia-hack.core/app

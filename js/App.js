@@ -20,19 +20,19 @@ class App extends Component {
 
            render={({error, props}) => {
                if (error) {
-				   return <div>{error.message}</div>;
+									 return <div>{error.message}</div>;
                } else if (props) {
-				   return (
-					   <ol>
-						 {props.teams.map((team,i) => <TeamDetails key={i} data={team} />)}
-					   </ol>					   
-				   );
+									 return (
+											 <ol>
+												 {props.teams.map((team,i) => <TeamDetails key={i} data={team} />)}
+											 </ol>					   
+									 );
                } else {
-				   return <div>Loading</div>;
-			   }
-		   }}
-          />
-      </div>
+									 return <div>Loading</div>;
+							 }
+					 }}
+				/>
+			</div>
     );
   }
 }
