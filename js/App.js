@@ -6,35 +6,46 @@ import {
 } from 'react-relay';
 
 import environment from './createRelayEnvironment';
-import TeamDetails from './TeamDetails';
+import TeamList from './TeamList';
+import PlayerOptions from './PlayerOptions';
+import TeamOptions from './TeamOptions';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h2>Relacinia</h2>
-        <QueryRenderer
-           environment={environment}
 
-           query={graphql`query AppTeamQuery { teams { ...TeamDetails } }`}
-
-           render={({error, props}) => {
-               if (error) {
-									 return <div>{error.message}</div>;
-               } else if (props) {
+		render() {
+				return (
+						<div className="App">
+							<h2>Relacinia</h2>
+							<QueryRenderer
+								 environment={environment}
+								 
+								 query={graphql`query AppQuery { 
+                   teamList: teams { ...TeamList } 
+			      		   allPlayers: players { ...PlayerOptions } 
+					         allTeams: teams { ...TeamOptions } 
+								 }`}
+								 
+								 render={({error, props}) => {
+										 if (error) {
+												 return <div>{error.message}</div>;
+										 } else if (props) {
 									 return (
-											 <ol>
-												 {props.teams.map((team,i) => <TeamDetails key={i} data={team} />)}
-											 </ol>					   
+											 <div>
+												 <TeamList data={props.teamList} />
+												 <form>
+ 													 <PlayerOptions data={props.allPlayers}/>
+													 <TeamOptions data={props.allTeams}/>
+												 </form>
+											 </div>
 									 );
-               } else {
-									 return <div>Loading</div>;
-							 }
-					 }}
-				/>
-			</div>
-    );
-  }
+										 } else {
+												 return <div>Loading</div>;
+										 }
+								 }}
+								/>
+								</div>
+				);
+		}
 }
 
 export default App;

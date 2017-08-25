@@ -46,13 +46,6 @@
         value (db/match [:type type])]
     (resolve-selection context args value)))
 
-(defn resolve-ref [m k]
-  (if (contains-key? m k)    
-    (if-let [ref (get m k)]
-      (assoc m k (db/match (uuid (:id ref))))
-      m)
-    m))
-
 (defn resolve-input
   ([m ks]
    (if (seq ks)

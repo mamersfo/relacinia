@@ -21,11 +21,11 @@ function fetchQuery(
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			query: operation.text, // GraphQL text from input
+			query: operation.text,
 			variables
 		})
 	}).then(response => {
-		return response.json();
+			return response.json();
 	});
 }
 
